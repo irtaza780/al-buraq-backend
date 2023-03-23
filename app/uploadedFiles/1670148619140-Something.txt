@@ -1,0 +1,105 @@
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import { styled } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import FacebookIcon from "../../assets/social/facebook.svg";
+const date = new Date();
+
+const styles = (theme) => ({
+  footer: {
+    alignItems: "center",
+    justifyText: "center",
+    marginBottom: theme.spacing(2),
+  },
+  root: {
+    flexGrow: 1,
+  },
+  section1: {
+    display: "flex",
+    justifyContent: "right",
+  },
+  rightText: {
+    display: "flex",
+    flexDirection: "column",
+    // justifyContent: "right",
+    fontSize: "20px",
+  },
+  footerText: {
+    fontSize: "12px",
+    display: "flex",
+    justifyContent: "right",
+  },
+  spacing: {
+    lineHeight: "40px",
+  },
+  links: { display: "flex", justifyContent: "space-between", marginLeft: "10px", textDecoration: "underline" },
+});
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
+
+const Footer = ({ ...props }) => (
+  // <footer className={props.classes.footer}>
+  <footer style={{ backgroundColor: "#272727", color: "white" }} className={props.classes.footer}>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <h1 style={{ alignText: "center" }}>PartOwn</h1>
+    </div>
+    <Grid style={{ display: "flex", justifyContent: "center" }}>
+      <Grid md={4}>
+        <div className={props.classes.links}>
+          <p>Home</p>
+          <p>Market Place</p>
+          <p>BarOne</p>
+          <p>AboutUs</p>
+          <p>FAQ</p>
+          <p>Blog</p>
+          <p>Contact Us</p>
+        </div>
+      </Grid>
+    </Grid>
+    <Grid style={{ display: "flex", justifyContent: "center" }}>
+      <Grid md={2}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <img src={FacebookLogo} alt="React Logo" />
+          <p>instagram icon</p>
+          <p>twitter icon</p>
+        </div>
+      </Grid>
+    </Grid>
+    {/* <Box sx={{ flexGrow: 1 }}>
+      <Grid container>
+        <Grid item xs={6} className={props.classes.footerText} style={{paddingRight: "50px"}}>
+          <div>
+            <Typography className={props.classes.spacing}>Home</Typography>
+            <Typography className={props.classes.spacing}>Marketplace</Typography>
+            <Typography className={props.classes.spacing}>Premium BarOne</Typography>
+            <Typography className={props.classes.spacing}>AboutUs</Typography>
+          </div>
+        </Grid>
+        <Grid item xs={6} md={6}>
+          <div>
+            <Typography className={props.classes.spacing}>FAQ</Typography>
+            <Typography className={props.classes.spacing}>Blog</Typography>
+            <Typography className={props.classes.spacing}>Contact Us</Typography>
+          </div>
+        </Grid>
+  
+      </Grid>
+    </Box> */}
+  </footer>
+);
+
+Footer.propTypes = {
+  classes: PropTypes.object,
+};
+
+export default withStyles(styles, { name: "SkFooter" })(Footer);

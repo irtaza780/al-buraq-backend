@@ -6,12 +6,14 @@ const ordersController = require("../app/controllers/ordersController");
 const servicesController = require("../app/controllers/servicesController");
 const common = require("../app/controllers/commonFunctions");
 const adminController = require("../app/controllers/adminController");
-var { ordersFileMiddleware } = require("../app/uploadCards/uploadFile");
+var {
+  ordersFileMiddleware,
+  uploadFileMiddleware,
+} = require("../app/uploadCards/uploadFile");
 
 const user = "/user";
 const admin = "/admin";
 
-// upload image
 // const uploadMiddleware = router.post(
 //   "/upload/file",
 //   uploadImage.single("file"),
@@ -77,6 +79,13 @@ router.get(
 );
 
 //*****************user routes ********************/
+
+//upload file
+router.post(
+  `${user}/upload/file`,
+  uploadFileMiddleware,
+  ordersController.uploadFile
+);
 
 //orders
 router.post(

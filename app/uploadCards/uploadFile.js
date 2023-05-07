@@ -15,6 +15,12 @@ const ordersFileMiddleware = multer({
   limits: { fieldSize: 50 * 1024 * 1024 },
 }).fields([{ name: "ordersFile" }]);
 
+const uploadFileMiddleware = multer({
+  storage : storage,
+  limits: { fieldSize: 50 * 1024 * 1024 },
+}).fields([{ name: "uploadedFile" }]);
+
 module.exports = {
   ordersFileMiddleware,
+  uploadFileMiddleware
 };

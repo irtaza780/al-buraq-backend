@@ -59,6 +59,25 @@ exports.createOrder = async (req, res) => {
   }
 };
 
+exports.uploadFile = async (req, res) => {
+  try {
+    const uploadedFile = req.files["uploadedFile"]
+      ? req.files["uploadedFile"][0].filename
+      : null;
+
+    console.log("uploaded File ", uploadedFile);
+
+    if (uploadedFile) {
+      res.send({ success: true, message: "file uploaded" });
+    }
+  } catch (err) {
+    console.log("server error ", err);
+    res
+      .status(500)
+      .send({ success: false, message: "Internal Server Error", err });
+  }
+};
+
 exports.getUserOrders = async (req, res) => {
   try {
     const { userId } = req.params;
